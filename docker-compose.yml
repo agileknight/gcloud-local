@@ -1,0 +1,18 @@
+# docker-compose up -d
+# docker-compose exec gcloud bash
+version: '2'
+services:
+  proxy: # kubectl proxy binds to localhost only
+    image: nginx
+    volumes: 
+      - ./nginx-config:/etc/nginx/conf.d:ro
+    ports:
+      - "8001:8002" # proxy from 8002 to 8001 (kubectl proxy default port)
+  gcloud:
+    image: google/cloud-sdk
+    volumes:
+      - ./gcloud-config:/.config/gcloud
+      - ./kube-config:/.kube
+    command: kubectl proxy
+    network_mode: service:proxy
+
