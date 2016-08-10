@@ -2,12 +2,14 @@
 # docker-compose exec gcloud bash
 version: '2'
 services:
-  proxy: # kubectl proxy binds to localhost only
+  proxy: # kubectl proxy/port-foward bind to localhost only
     image: nginx
     volumes: 
       - ./nginx-config:/etc/nginx/conf.d:ro
     ports:
-      - "8001:8002" # proxy from 8002 to 8001 (kubectl proxy default port)
+      - "8001:8002" # kubectl proxy default port
+      - "8080:8081" # kubectl port-forward POD 8080:REMOTE_PORT
+      - "8181:8182" # kubectl port-forward POD 8181:REMOTE_PORT
   gcloud:
     image: google/cloud-sdk
     volumes:
