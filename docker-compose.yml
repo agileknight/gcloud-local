@@ -10,8 +10,9 @@ services:
       - "8001:8002" # kubectl proxy default port
       - "8080:8081" # kubectl port-forward POD 8080:REMOTE_PORT
       - "8181:8182" # kubectl port-forward POD 8181:REMOTE_PORT
+      - "8101:8101"
   gcloud:
-    image: google/cloud-sdk
+    build: docker-gcloud
     volumes:
       - ./gcloud-config:/.config/gcloud
       - ./kube-config:/.kube
