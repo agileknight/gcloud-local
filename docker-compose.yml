@@ -22,6 +22,7 @@ services:
       - ./gcloud-config:/.config/gcloud
       - ./kube-config:/.kube
       - /Users/philippmeier/.docker/machine/machines/conrad:/docker-certs
+      - ./terraform:/terraform
     command: kubectl proxy
     network_mode: service:proxy
 
