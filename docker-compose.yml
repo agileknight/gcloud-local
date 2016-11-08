@@ -23,6 +23,7 @@ services:
       - ./kube-config:/.kube
       - /Users/philippmeier/.docker/machine/machines/conrad:/docker-certs
       - ./terraform:/terraform
+      - /Users/philippmeier/conrad:/conrad
     command: kubectl proxy
     network_mode: service:proxy
 
