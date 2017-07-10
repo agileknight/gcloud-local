@@ -19,7 +19,7 @@ services:
       DOCKER_CERT_PATH: "/docker-certs"
       DOCKER_MACHINE_NAME: "conrad"
     volumes:
-      - ./gcloud-config:/.config/gcloud
+      - ./gcloud-config:/root/.config/gcloud
       - ./kube-config:/.kube
       - /Users/philippmeier/.docker/machine/machines/conrad:/docker-certs
       - ./terraform:/terraform
