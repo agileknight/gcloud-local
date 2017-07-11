@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y \
     ansible \
     python-libcloud \
     python-setuptools \
+    ssh \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN easy_install pip

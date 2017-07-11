@@ -24,6 +24,7 @@ services:
       - /Users/philippmeier/.docker/machine/machines/conrad:/docker-certs
       - ./terraform:/terraform
       - /Users/philippmeier/conrad:/conrad
+      - /Users/philippmeier/.ssh:/root/.ssh
     command: kubectl proxy
     network_mode: service:proxy
 
