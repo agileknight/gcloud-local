@@ -18,6 +18,9 @@ services:
       DOCKER_HOST: "tcp://192.168.99.100:2376"
       DOCKER_CERT_PATH: "/docker-certs"
       DOCKER_MACHINE_NAME: "conrad"
+      VAULT_ADDR: "https://vault.mgmt.conrad24.com:8200"
+      VAULT_TOKEN: TODO
+      VAULT_SKIP_VERIFY: "1"
     volumes:
       - ./gcloud-config:/root/.config/gcloud
       - ./kube-config:/.kube
@@ -27,4 +30,3 @@ services:
       - /Users/philippmeier/.ssh:/root/.ssh
     command: kubectl proxy
     network_mode: service:proxy
-

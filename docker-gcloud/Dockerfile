@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y \
     python-libcloud \
     python-setuptools \
     ssh \
+    git \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN easy_install pip
@@ -48,3 +49,16 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade cryptography
 RUN pip install --upgrade ansible
 RUN pip install --upgrade apache-libcloud
+
+# install vault CLI
+ENV VAULT_VERSION 0.8.1
+RUN mkdir /tmp/vault \
+  && cd /tmp/vault \
+  && curl -O -sS -L https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
+  && unzip vault_${VAULT_VERSION}_linux_amd64.zip \
+  && mv vault /usr/local/bin \
+  && rm -rf /tmp/vault
+
+RUN apt-get update && apt-get install -y \
+    jq \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
