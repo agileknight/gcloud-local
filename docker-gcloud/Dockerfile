@@ -59,9 +59,10 @@ RUN mkdir /tmp/vault \
   && mv vault /usr/local/bin \
   && rm -rf /tmp/vault
 
+# dnsutils is for dig
 RUN apt-get update && apt-get install -y \
     jq \
-    dnsutils \ # for dig
+    dnsutils \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN echo 'eval $(ssh-agent)' >> /etc/profile.d/ssh-agent.sh
