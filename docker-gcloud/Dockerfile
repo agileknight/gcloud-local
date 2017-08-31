@@ -62,3 +62,7 @@ RUN mkdir /tmp/vault \
 RUN apt-get update && apt-get install -y \
     jq \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN echo 'eval $(ssh-agent)' >> /etc/profile.d/ssh-agent.sh
+RUN echo 'shopt -s histappend; PROMPT_COMMAND="history -a;$PROMPT_COMMAND"' >> /etc/profile.d/immediate-history.sh
+RUN echo 'HISTFILE=/bash-history/.bash_history' >> /etc/profile.d/history-location.sh
