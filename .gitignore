@@ -1,4 +1,5 @@
 gcloud-config
 kube-config
 bash-history
-
+local.env
+.DS_Store

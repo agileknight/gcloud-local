@@ -14,13 +14,8 @@ services:
       - "8101:8101"
   gcloud:
     build: docker-gcloud
-    environment:
-      #DOCKER_TLS_VERIFY: "1"
-      #DOCKER_HOST: "tcp://192.168.99.100:2376"
-      #DOCKER_CERT_PATH: "/docker-certs"
-      #DOCKER_MACHINE_NAME: "conrad"
-      VAULT_ADDR: "https://vault.mgmt.conrad24.com:8200"
-      VAULT_TOKEN: TODO
+    env_file:
+      - local.env
     volumes:
       - ./gcloud-config:/root/.config/gcloud
       - ./kube-config:/root/.kube
