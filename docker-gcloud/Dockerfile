@@ -50,6 +50,11 @@ RUN pip install --upgrade cryptography
 RUN pip install --upgrade ansible
 RUN pip install --upgrade apache-libcloud
 
+# for temporary_workarounds/get_password.py
+RUN apt-get update && apt-get install -y \
+    python3-yaml \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # install vault CLI
 ENV VAULT_VERSION 0.8.1
 RUN mkdir /tmp/vault \
