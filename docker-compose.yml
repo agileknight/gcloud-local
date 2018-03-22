@@ -24,7 +24,7 @@ services:
     volumes:
       - ./gcloud-config:/root/.config/gcloud
       - ./kube-config:/root/.kube
-      - ./bash-history:/bash-history
+      - ./bash-history/.bash_history:/root/.bash_history
       - /Users/philippmeier/.docker/machine/machines/conrad:/docker-certs
       - ./terraform:/terraform
       - /Users/philippmeier/conrad:/conrad
