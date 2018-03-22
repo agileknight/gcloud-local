@@ -23,7 +23,7 @@ services:
       VAULT_TOKEN: TODO
     volumes:
       - ./gcloud-config:/root/.config/gcloud
-      - ./kube-config:/.kube
+      - ./kube-config:/root/.kube
       - ./bash-history:/bash-history
       - /Users/philippmeier/.docker/machine/machines/conrad:/docker-certs
       - ./terraform:/terraform
