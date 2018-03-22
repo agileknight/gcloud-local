@@ -15,10 +15,10 @@ services:
   gcloud:
     build: docker-gcloud
     environment:
-      DOCKER_TLS_VERIFY: "1"
-      DOCKER_HOST: "tcp://192.168.99.100:2376"
-      DOCKER_CERT_PATH: "/docker-certs"
-      DOCKER_MACHINE_NAME: "conrad"
+      #DOCKER_TLS_VERIFY: "1"
+      #DOCKER_HOST: "tcp://192.168.99.100:2376"
+      #DOCKER_CERT_PATH: "/docker-certs"
+      #DOCKER_MACHINE_NAME: "conrad"
       VAULT_ADDR: "https://vault.mgmt.conrad24.com:8200"
       VAULT_TOKEN: TODO
       VAULT_SKIP_VERIFY: "1"
@@ -30,5 +30,6 @@ services:
       - ./terraform:/terraform
       - /Users/philippmeier/conrad:/conrad
       - /Users/philippmeier/.ssh:/root/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock
     command: kubectl proxy
     network_mode: service:proxy
