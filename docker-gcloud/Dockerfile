@@ -70,6 +70,15 @@ RUN apt-get update && apt-get install -y \
     dnsutils \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# kubernetes helm
+ENV HELM_VERSION 2.8.2
+RUN mkdir /tmp/helm \
+    && cd /tmp/helm \
+    && curl -o helm.tar.gz -sS -L https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+    && tar -xvzf helm.tar.gz \
+    && mv linux-amd64/helm /usr/local/bin \
+    && rm -rf /tmp/helm
+
 RUN echo 'eval $(ssh-agent)' >> /etc/profile.d/ssh-agent.sh
 RUN echo 'shopt -s histappend; PROMPT_COMMAND="history -a;$PROMPT_COMMAND"' >> /etc/profile.d/immediate-history.sh
 RUN echo 'HISTFILE=/bash-history/.bash_history' >> /etc/profile.d/history-location.sh
